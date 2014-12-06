@@ -1,0 +1,29 @@
+<%- include ../header.ejs %>
+<h2>Clientes</h2>
+<%- include /add_customer.ejs %>
+<br/>
+<table class="table">
+   <tr>
+       <th>No</th>
+       <th>Nome</th>
+       <th>Sobrenome</th>
+   </tr>                               
+   <% if(data.length){ 
+                   
+    for(var i = 0;i < data.length;i++) { %>                 
+   <tr>
+       <td><%=data[i].id_customer%></td>
+       <td><%=data[i].name%></td>
+       <td><%=data[i].last_name%></td>
+   </tr>
+<% }
+
+}else{ %>
+    <tr>
+       <td colspan="3">No user</td>
+    </tr>
+<% } %>
+                                                
+</table>
+
+<%- include ../footer.ejs %>
