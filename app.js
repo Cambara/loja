@@ -43,7 +43,8 @@ app.use(
 ); 
  
 //routes
-app.get('/customers', customers.list);
+app.get('/customers', customers.index);
+app.get('/customers/list', customers.list);
 app.get('/customers/add', customers.add);
 app.post('/customers/add', customers.save);
 // app.get('/customers/delete/:id', customers.delete_customer);
