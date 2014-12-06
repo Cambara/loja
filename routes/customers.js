@@ -2,6 +2,10 @@
 	GET customers listing
 */
 
+
+exports.index = function(req,res) {
+	res.render('./customer/list',{page_title:"Customers - Node.js"});	
+}
 exports.list = function(req, res) {
 	req.getConnection(function(err,connection){
 
@@ -9,7 +13,8 @@ exports.list = function(req, res) {
 			if(err)
 				console.log('Error Selecting : %s',err);
 
-			res.render('./customer/list',{page_title:"Customers - Node.js", data:rows});
+			// res.render('./customer/list',{page_title:"Customers - Node.js", data:rows});
+			res.json({ customers: rows });
 			});
 		});
 };
@@ -33,7 +38,8 @@ exports.add = function(req,res) {
 // };
 
 exports.save = function(req,res) {
-	var input = JSON.parse(JSON.stringify(req.body));
+	var data = JSON.parse(JSON.stringify(req.body));
+	var input = data.customer;
 	req.getConnection(function(err, connection) 
 	{
 		var data = {
@@ -45,7 +51,8 @@ exports.save = function(req,res) {
 		var query = connection.query("INSERT INTO customer set ?",data,function(err,rows) 
 		{
 			if (err) { console.log("Error inserting : %s",err);};
-			res.redirect('/customers');
+			// res.redirect('/customers');
+			res.json({ msg: 'Cliente Adicionado' });
 		});
 	});
 }

@@ -1,29 +1,23 @@
-<%- include ../header.ejs %>
-<h2>Clientes</h2>
-<%- include /add_customer.ejs %>
-<br/>
-<table class="table">
-   <tr>
-       <th>No</th>
-       <th>Nome</th>
-       <th>Sobrenome</th>
-   </tr>                               
-   <% if(data.length){ 
-                   
-    for(var i = 0;i < data.length;i++) { %>                 
-   <tr>
-       <td><%=data[i].id_customer%></td>
-       <td><%=data[i].name%></td>
-       <td><%=data[i].last_name%></td>
-   </tr>
-<% }
+<div ng-app="myApp" ng-controller="customerController"> 
+  <%- include ../header.ejs %>
+  <h2>Clientes</h2>
+  <%- include /add_customer.ejs %>
+  <br/>
 
-}else{ %>
-    <tr>
-       <td colspan="3">No user</td>
-    </tr>
-<% } %>
-                                                
-</table>
-
+  <table class="table">
+     <tr>
+         <th>No</th>
+         <th>Nome</th>
+         <th>Sobrenome</th>
+     </tr>                               
+  
+  
+     <tr ng-repeat="c in customer.list">
+         <td>{_c.id_customer_}</td>
+         <td>{_c.name_}</td>
+         <td>{_c.last_name_}</td>
+     </tr>                                        
+  </table>
+  
+</div>
 <%- include ../footer.ejs %>
