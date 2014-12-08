@@ -12,8 +12,6 @@ exports.list = function(req, res) {
 		connection.query('SELECT * FROM customer',function(err,rows) {
 			if(err)
 				console.log('Error Selecting : %s',err);
-
-			// res.render('./customer/list',{page_title:"Customers - Node.js", data:rows});
 			res.json({ customers: rows });
 			});
 		});

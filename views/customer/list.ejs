@@ -9,13 +9,15 @@
          <th>No</th>
          <th>Nome</th>
          <th>Sobrenome</th>
+         <th>Aniversário</th>
      </tr>                               
   
   
      <tr ng-repeat="c in customer.list">
-         <td>{_c.id_customer_}</td>
+         <td>{_c.id_customer_}</td> 
          <td>{_c.name_}</td>
          <td>{_c.last_name_}</td>
+         <td>{_c.birth_date|date:"dd/MM/yyyy" _}</td>
      </tr>                                        
   </table>
   
