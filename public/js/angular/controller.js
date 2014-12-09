@@ -3,16 +3,8 @@ var app = angular.module('myApp', ['CustomerModel'],function($interpolateProvide
 	$interpolateProvider.endSymbol('_}');
 });
 
-app.controller("customerController",function($scope,$http, Customer) {
-	$scope.list_customer = function() {
-		$http.get('customers/list').success(function(json){
-			$scope.customer.list = json.customers;		
-		});		
-	};
+app.controller("customerController",function($scope, Customer) {
 	$scope.customer = Customer;
-	$scope.list_customer();
-	console.log($scope.customer.name);
-
-	
+	$scope.customer.get_list(); 
 });
 

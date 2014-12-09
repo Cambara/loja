@@ -36,8 +36,7 @@ exports.add = function(req,res) {
 // };
 
 exports.save = function(req,res) {
-	var data = JSON.parse(JSON.stringify(req.body));
-	var input = data.customer;
+	var input = JSON.parse(JSON.stringify(req.body));
 	req.getConnection(function(err, connection) 
 	{
 		var data = {
@@ -49,8 +48,7 @@ exports.save = function(req,res) {
 		var query = connection.query("INSERT INTO customer set ?",data,function(err,rows) 
 		{
 			if (err) { console.log("Error inserting : %s",err);};
-			// res.redirect('/customers');
-			res.json({ msg: 'Cliente Adicionado' });
+			res.json({msg:'Cliente Adicionado'});
 		});
 	});
 }
